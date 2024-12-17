@@ -4,9 +4,9 @@ import pandas as pd
 # API endpoint and headers
 url = "https://linkedin-data-scraper.p.rapidapi.com/search_jobs"
 headers = {
-    "x-rapidapi-key": "7bbaa81c63msh190363b3189eb05p10f6d2jsne405b9c1ded2",
-    "x-rapidapi-host": "linkedin-data-scraper.p.rapidapi.com",
-    "Content-Type": "application/json"
+    'x-rapidapi-key': "70d959acd9msh53971f20fba6710p16e28bjsne9d41f659151",
+    'x-rapidapi-host': "linkedin-data-scraper.p.rapidapi.com",
+    'Content-Type': "application/json"
 }
 
 # List of job keywords to search
@@ -50,6 +50,6 @@ for keyword in job_keywords:
 df = pd.DataFrame(all_jobs)
 
 # Save the DataFrame to a CSV file
-df.to_csv("S3//linkedin_jobs.csv", mode='a', index=False, header=not pd.io.common.file_exists("linkedin_jobs.csv"))
+df.to_csv("S3//jobs.csv", mode='a', index=False, header=not pd.io.common.file_exists("JOBETL1//S3//jobs.csv"))
 
-print("Job data saved to linkedin_jobs.csv")
+print("Job data saved to jobs.csv")

@@ -37,7 +37,7 @@ for keyword in job_keywords:
                 formatted_location = job.get("formattedLocation", "N/A")
                 
                 all_jobs.append({
-                    "Keyword": keyword,
+                    #"Keyword": keyword,
                     "Job Title": job_title,
                     "Company Name": company_name,
                     "Location": formatted_location,
@@ -50,6 +50,6 @@ for keyword in job_keywords:
 df = pd.DataFrame(all_jobs)
 
 # Save the DataFrame to a CSV file
-df.to_csv("JOBETL1//S3//linkedin_jobs.csv", mode='a', index=False, header=not pd.io.common.file_exists("JOBETL1//S3//linkedin_jobs.csv"))
+df.to_csv("S3//linkedin_jobs.csv", mode='a', index=False, header=not pd.io.common.file_exists("linkedin_jobs.csv"))
 
 print("Job data saved to linkedin_jobs.csv")

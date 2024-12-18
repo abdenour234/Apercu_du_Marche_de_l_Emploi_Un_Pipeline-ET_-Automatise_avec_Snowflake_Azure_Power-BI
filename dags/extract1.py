@@ -37,7 +37,7 @@ for keyword in job_keywords:
                 formatted_location = job.get("formattedLocation", "N/A")
                 
                 all_jobs.append({
-                    #"Keyword": keyword,
+                    
                     "Job Title": job_title,
                     "Company Name": company_name,
                     "Location": formatted_location,

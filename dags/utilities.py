@@ -1,3 +1,4 @@
+
 import pandas as pd
 import numpy as np
 
@@ -161,6 +162,7 @@ def extract_databases(text):
     # Return unique databases or NaN if none are found
     return list(set(found_databases)) if found_databases else np.nan
 
+
 def extract_cloud_providers(text):
     """
     Extract cloud providers mentioned in the given text.
@@ -212,6 +214,7 @@ def extract_cloud_providers(text):
     
     # Return unique cloud providers or NaN if none are found
     return list(set(extracted_tools)) if extracted_tools else np.nan
+
 
 def extract_frameworks_libraries(text):
     """
@@ -309,4 +312,5 @@ def extract_bigdata(text):
     
     # Return unique tools or NaN if none are found
     return list(set(found_tools)) if found_tools else np.nan
+
 

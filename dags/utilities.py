@@ -314,3 +314,58 @@ def extract_bigdata(text):
     return list(set(found_tools)) if found_tools else np.nan
 
 
+def get_moroccan_city(location: str) -> str:
+    city_variants = {
+        "rabat": "Rabat",
+        "casablanca": "Casablanca",
+        "fez": "Fez",
+        "fès": "Fez",
+        "marrakesh": "Marrakesh",
+        "tangier": "Tangier",
+        "tanger": "Tangier",
+        "meknes": "Meknes",
+        "agadir": "Agadir",
+        "tetouan": "Tetouan",
+        "tétouan": "Tetouan",
+        "berkane": "Berkane",
+        "kenitra": "Kenitra",
+        "el borouj": "El Borouj"
+    }
+    location_lower = location.strip().lower()
+    for variant, city in city_variants.items():
+        if variant in location_lower:
+            return city
+    return ""
+
+def categorize_job_title(job_title: str) -> str:
+    categories = [
+        ("Data Scientist", ["data scientist", "ml engineer", "ai & data science", "llm", 
+                            "machine learning", "ai trainer", "quantitative data", 
+                            "datascientist", "ai lead", "statistician"]),
+        ("Data Analytics", ["data analytics", "data analyst", "bi", "data visualization", 
+                            "data quality", "revenue management", "business research", 
+                            "data insights", "data modeler", "biostatistician"]),
+        ("Data Engineer", ["data engineer", "big data", "etl", "data modeling", 
+                           "datawarehousing", "apache spark", "data pipeline", "data devops", 
+                           "data lake", "data ops"]),
+        ("DevOps", ["devops", "sre", "cloudops", "site reliability", "cicd", "kubernetes", 
+                    "azure devops", "platform engineer", "cloud engineer"]),
+        ("Cloud Engineer", ["cloud", "aws", "gcp", "azure", "google cloud", "cloud platform", 
+                            "cloud security", "cloud architect", "cloud solution", "snowflake"]),
+        ("Software Engineer", ["software engineer", "developer", "full stack", "backend", 
+                               "frontend", "web developer", "mobile developer", "java", 
+                               "python", "c#", "javascript", "node.js", "angular", "react", 
+                               "symfony", "odoo", "salesforce", "php", "sw developer", 
+                               "solidity", "rust", "flutter", "ios", "android", 
+                               "embedded software", "qa engineer", "test automation", 
+                               "coder", "technical lead", "api developer"]),
+        ("Other", [])
+    ]
+    
+    job_title_lower = job_title.strip().lower()
+    for category, keywords in categories:
+        for keyword in keywords:
+            if keyword in job_title_lower:
+                return category
+    return "Other"
+

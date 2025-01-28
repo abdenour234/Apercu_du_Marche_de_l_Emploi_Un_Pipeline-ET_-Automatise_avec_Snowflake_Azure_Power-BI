@@ -502,33 +502,45 @@ def categorize_job_title(job_title: str) -> str:
 from azure.storage.blob import BlobServiceClient
 from io import StringIO
 
-def upload_dataframe_to_blob(dataframe, connection_string, container_name, blob_name):
+def upload_dataframe_to_blob(new_data,connection_string, container_name, blob_name):
     """
-    Uploads a Pandas DataFrame to Azure Blob Storage as a CSV file.
-    
-    :param dataframe: pd.DataFrame - The DataFrame to upload.
+    Appends new data to an existing CSV file in Azure Blob Storage.
+
     :param connection_string: str - Azure Blob Storage connection string.
-    :param container_name: str - The name of the container in Blob Storage.
-    :param blob_name: str - The name of the blob (file name in the container).
+    :param container_name: str - Name of the container in Blob Storage.
+    :param blob_name: str - Name of the blob (CSV file).
+    :param new_data: pd.DataFrame - New data to append.
     """
     try:
-        # Convert DataFrame to CSV format as a string
-        csv_data = StringIO()
-        dataframe.to_csv(csv_data, index=False)
-        csv_data.seek(0)  # Reset cursor to the beginning of the string
-        
-        # Initialize BlobServiceClient
+        # Initialize the BlobServiceClient
         blob_service_client = BlobServiceClient.from_connection_string(connection_string)
-        
-        # Get the container client
         container_client = blob_service_client.get_container_client(container_name)
+
+        # Check if the blob exists
+        blob_client = container_client.get_blob_client(blob_name)
+        try:
+            # Download existing data
+            existing_blob = blob_client.download_blob().readall()
+            existing_data = pd.read_csv(StringIO(existing_blob.decode('utf-8')))
+        except Exception as e:
+            print(f"Blob '{blob_name}' does not exist or is empty. Creating a new one.")
+            existing_data = pd.DataFrame()  # Start with an empty DataFrame
+
+        # Append new data to the existing DataFrame
+        updated_data = pd.concat([existing_data, new_data], ignore_index=True)
+
+        # Save the updated DataFrame back to a CSV format
+        updated_csv = StringIO()
+        updated_data.to_csv(updated_csv, index=False)
         
-        # Upload the CSV data to Azure Blob Storage
-        container_client.upload_blob(name=blob_name, data=csv_data.getvalue(), overwrite=True)
-        
-        print(f"DataFrame uploaded successfully to blob '{blob_name}' in container '{container_name}'!")
+        # Upload the updated CSV back to the blob
+        blob_client.upload_blob(data=updated_csv.getvalue(), overwrite=True)
+
+        print(f"Data appended successfully to blob '{blob_name}' in container '{container_name}'!")
+
     except Exception as e:
         print(f"An error occurred: {e}")
+
 from azure.storage.blob import BlobServiceClient
 from io import StringIO
 import pandas as pd

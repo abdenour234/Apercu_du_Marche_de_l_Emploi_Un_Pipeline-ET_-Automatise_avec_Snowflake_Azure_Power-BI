@@ -499,3 +499,66 @@ def categorize_job_title(job_title: str) -> str:
     return "Other"
 
 
+from azure.storage.blob import BlobServiceClient
+from io import StringIO
+
+def upload_dataframe_to_blob(dataframe, connection_string, container_name, blob_name):
+    """
+    Uploads a Pandas DataFrame to Azure Blob Storage as a CSV file.
+    
+    :param dataframe: pd.DataFrame - The DataFrame to upload.
+    :param connection_string: str - Azure Blob Storage connection string.
+    :param container_name: str - The name of the container in Blob Storage.
+    :param blob_name: str - The name of the blob (file name in the container).
+    """
+    try:
+        # Convert DataFrame to CSV format as a string
+        csv_data = StringIO()
+        dataframe.to_csv(csv_data, index=False)
+        csv_data.seek(0)  # Reset cursor to the beginning of the string
+        
+        # Initialize BlobServiceClient
+        blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+        
+        # Get the container client
+        container_client = blob_service_client.get_container_client(container_name)
+        
+        # Upload the CSV data to Azure Blob Storage
+        container_client.upload_blob(name=blob_name, data=csv_data.getvalue(), overwrite=True)
+        
+        print(f"DataFrame uploaded successfully to blob '{blob_name}' in container '{container_name}'!")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+from azure.storage.blob import BlobServiceClient
+from io import StringIO
+import pandas as pd
+
+def read_dataframe_from_blob(connection_string, container_name, blob_name):
+    """
+    Reads a CSV file from Azure Blob Storage and loads it into a Pandas DataFrame.
+    
+    :param connection_string: str - Azure Blob Storage connection string.
+    :param container_name: str - The name of the container in Blob Storage.
+    :param blob_name: str - The name of the blob (CSV file).
+    :return: pd.DataFrame - The loaded DataFrame.
+    """
+    try:
+        # Initialize BlobServiceClient
+        blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+        
+        # Get the container client
+        container_client = blob_service_client.get_container_client(container_name)
+        
+        # Download the blob content
+        blob_client = container_client.get_blob_client(blob_name)
+        blob_data = blob_client.download_blob().readall()
+        
+        # Convert the blob content to a DataFrame
+        csv_data = StringIO(blob_data.decode('utf-8'))
+        dataframe = pd.read_csv(csv_data)
+        
+        print(f"DataFrame loaded successfully from blob '{blob_name}' in container '{container_name}'!")
+        return dataframe
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None

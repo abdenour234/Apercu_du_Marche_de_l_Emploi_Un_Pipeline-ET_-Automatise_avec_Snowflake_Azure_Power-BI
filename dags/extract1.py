@@ -1,14 +1,14 @@
 import requests
 import pandas as pd
-
+from utilities  import upload_dataframe_to_blob 
 def extract_():
     # API endpoint and headers
     url = "https://linkedin-data-scraper.p.rapidapi.com/search_jobs"
     headers = {
-        'x-rapidapi-key': "70d959acd9msh53971f20fba6710p16e28bjsne9d41f659151",
-        'x-rapidapi-host': "linkedin-data-scraper.p.rapidapi.com",
-        'Content-Type': "application/json"
-    }
+    'x-rapidapi-key': "4083d477c6msh3cbfbf8d7897306p1e7ec5jsn175d96ebac63",
+    'x-rapidapi-host': "linkedin-data-scraper.p.rapidapi.com",
+    'Content-Type': "application/json"
+}
 
     # List of job keywords to search
     job_keywords = ["Data Scientist", "Data Analyst", "Data Engineer","Cloud Engineer", "Software Developer", "Software Engineer", "DevOps Engineer", "Cloud Architect"]
@@ -49,9 +49,7 @@ def extract_():
 
     # Convert the list of jobs into a Pandas DataFrame
     df = pd.DataFrame(all_jobs)
-
-    # Save the DataFrame to a CSV file
-    df.to_csv("jobs2.csv", mode='a', index=False, header=not pd.io.common.file_exists("JOBETL1//S3//jobs.csv"))
+    upload_dataframe_to_blob(df,connection_string="DefaultEndpointsProtocol=https;AccountName=myaccount123xyz;AccountKey=rcdaFz9G/N7oKPqrKVOaotV1uFCcNpQrGuCBXkvRvErT+G/oKPMXO2cWXCda99rfSBNMM2Pd0PyH+AStkThGVQ==;EndpointSuffix=core.windows.net",container_name="bronze",blob_name="data/data_bronze.csv")
 
     return df
 

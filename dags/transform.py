@@ -1,20 +1,23 @@
 import numpy as pd 
 import pandas as pd 
 from utilities import *
+def transform():
+    df = read_dataframe_from_blob(connection_string="DefaultEndpointsProtocol=https;AccountName=myaccount123xyz;AccountKey=rcdaFz9G/N7oKPqrKVOaotV1uFCcNpQrGuCBXkvRvErT+G/oKPMXO2cWXCda99rfSBNMM2Pd0PyH+AStkThGVQ==;EndpointSuffix=core.windows.net",container_name="bronze",blob_name="data/data_bronze.csv")
+    df['Cloud_Providers']=df['Description'].apply(extract_cloud_providers)
+    df['frameworks_libraries']=df['Description'].apply(extract_frameworks_libraries)
+    df['big_data_tools']=df['Description'].apply(extract_bigdata)
 
-df = pd.read_csv("JOBETL1/S3/jobs.csv")
-df['Cloud_Providers']=df['Description'].apply(extract_cloud_providers)
-df['frameworks_libraries']=df['Description'].apply(extract_frameworks_libraries)
-df['big_data_tools']=df['Description'].apply(extract_bigdata)
+    df["programming_languages"]=df["Description"].apply(extract_programming_languages)
+    df["data_tools"]=df["Description"].apply(extract_data_tools)
+    df["DevopsTools"]=df["Description"].apply(extract_devops_tools)
+    df["DataBases"]=df["Description"].apply(extract_databases)
+    df["level"] = df["Description"].apply(classify_job_level)
+    df["city"] = df['Location'].apply(get_moroccan_city)
+    df["Role"] =df["Job Title"].apply(categorize_job_title)
 
-df["programming_languages"]=df["Description"].apply(extract_programming_languages)
-df["data_tools"]=df["Description"].apply(extract_data_tools)
-df["DevopsTools"]=df["Description"].apply(extract_devops_tools)
-df["DataBases"]=df["Description"].apply(extract_databases)
-df["level"] = df["Description"].apply(classify_job_level)
-df["city"] = df['Location'].apply(get_moroccan_city)
-df["Role"] =df["Job Title"].apply(categorize_job_title)
+    upload_dataframe_to_blob(df,connection_string="DefaultEndpointsProtocol=https;AccountName=myaccount123xyz;AccountKey=rcdaFz9G/N7oKPqrKVOaotV1uFCcNpQrGuCBXkvRvErT+G/oKPMXO2cWXCda99rfSBNMM2Pd0PyH+AStkThGVQ==;EndpointSuffix=core.windows.net",container_name="silver",blob_name="data/data_silver.csv")
+    return df
 
-df.to_csv("JOBETL1/S3/jobs_with_features.csv", index=False)
+transform()
 
 

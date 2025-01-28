@@ -1,6 +1,7 @@
 
-import pandas as pd
 import numpy as np
+from enum import Enum
+from typing import Tuple, List
 
 def extract_programming_languages(text):
     """
@@ -314,3 +315,129 @@ def extract_bigdata(text):
     return list(set(found_tools)) if found_tools else np.nan
 
 
+class JobLevel(Enum):
+    SENIOR = "senior"
+    JUNIOR = "junior"
+    INTERNSHIP = "internship"
+
+def classify_job_level(job_description: str) -> Tuple[JobLevel, List[str]]:
+    """
+    Determines if a job description is for a senior, junior, or internship position.
+    
+    Args:
+        job_description (str): The job description text to analyze
+        
+    Returns:
+        tuple[JobLevel, list[str]]: A tuple containing:
+            - JobLevel enum indicating the position level
+            - List of evidence supporting the classification
+    """
+    # Convert to lowercase for case-insensitive matching
+    text = job_description.lower()
+    evidence = []
+    
+    # Senior level indicators
+    senior_patterns = {
+        'experience': [
+            r'\b[5-9]\+?\s*years?\s+of\s+experience',
+            r'\b\d{2}\+?\s*years?\s+of\s+experience',
+            r'senior\s+level\s+experience',
+            r'extensive\s+experience'
+        ],
+        'leadership': [
+            r'\blead\b|\bleading\b|\bleadership\b',
+            r'\bmanage\b|\bmanager\b|\bmanagement\b',
+            r'head\s+of',
+            r'architect',
+            r'principal'
+        ],
+        'strategic': [
+            r'strategic',
+            r'direction',
+            r'vision',
+            r'mentor\s+others',
+            r'guide\s+team'
+        ]
+    }
+    
+    # Junior level indicators
+    junior_patterns = {
+        'experience': [
+            r'\b[1-4]\+?\s*years?\s+of\s+experience',
+            r'entry\s+level',
+            r'junior',
+            r'recent\s+graduate'
+        ],
+        'support': [
+            r'assist\b',
+            r'support\b',
+            r'help\b',
+            r'coordinate'
+        ],
+        'supervision': [
+            r'under\s+supervision',
+            r'under\s+guidance',
+            r'report\s+to'
+        ]
+    }
+    
+    # Internship indicators
+    internship_patterns = {
+        'position': [
+            r'\bintern\b',
+            r'\binternship\b',
+            r'\binterns\b',
+            r'training\s+program',
+            r'trainee'
+        ],
+        'education': [
+            r'currently\s+(pursuing|enrolled|studying)',
+            r'current\s+student',
+            r'enrolled\s+in.*degree'
+        ],
+        'learning': [
+            r'learning\s+opportunity',
+            r'hands[-\s]on\s+experience',
+            r'practical\s+experience',
+            r'unpaid',
+            r'academic\s+credit'
+        ]
+    }
+    
+    # Count matches for each level
+    senior_count = 0
+    junior_count = 0
+    internship_count = 0
+    
+    # Check senior patterns
+    for category, patterns in senior_patterns.items():
+        for pattern in patterns:
+            if re.search(pattern, text):
+                evidence.append(f"Senior indicator ({category}): {pattern}")
+                senior_count += 1
+    
+    # Check junior patterns
+    for category, patterns in junior_patterns.items():
+        for pattern in patterns:
+            if re.search(pattern, text):
+                evidence.append(f"Junior indicator ({category}): {pattern}")
+                junior_count += 1
+    
+    # Check internship patterns
+    for category, patterns in internship_patterns.items():
+        for pattern in patterns:
+            if re.search(pattern, text):
+                evidence.append(f"Internship indicator ({category}): {pattern}")
+                internship_count += 1
+    
+    # Decision logic with weightings
+    if internship_count >= 2 and senior_count < 2:
+        return JobLevel.INTERNSHIP
+    elif senior_count >= 2 and internship_count < 2:
+        return JobLevel.SENIOR
+    elif junior_count > senior_count or (junior_count >= 1 and senior_count < 2):
+        return JobLevel.JUNIOR
+    else:
+        # Default to junior if unclear
+        evidence.append("Insufficient clear indicators - defaulting to JUNIOR")
+        return JobLevel.JUNIOR

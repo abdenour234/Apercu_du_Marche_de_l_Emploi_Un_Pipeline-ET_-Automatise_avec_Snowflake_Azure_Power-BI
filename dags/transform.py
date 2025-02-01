@@ -20,7 +20,7 @@ def transform(**kwargs):
     df["city"] = df['Location'].apply(get_moroccan_city)
     df["Role"] =df["Job Title"].apply(categorize_job_title)
 
-    upload_dataframe_to_blob(df,connection_string="DefaultEndpointsProtocol=https;AccountName=myaccount123xyz;AccountKey=rcdaFz9G/N7oKPqrKVOaotV1uFCcNpQrGuCBXkvRvErT+G/oKPMXO2cWXCda99rfSBNMM2Pd0PyH+AStkThGVQ==;EndpointSuffix=core.windows.net",container_name="silver",blob_name="data/data_silver.csv")
+    upload_dataframe_to_blob(df,connection_string="DefaultEndpointsProtocol=https;AccountName=myaccount123xyz;AccountKey=xhK3fQlCsEhvhkYeB4T4R2i6+kKB9vNPNKCkELyp87bo4BYnf9ZiZAWWXf0XeyhgKY3c1CZtK6jL+AStQynDEg==;EndpointSuffix=core.windows.net",container_name="silver",blob_name="data/data_silver.csv")
     # Push the transformed DataFrame to XCom
     ti.xcom_push(key='transformed_data', value=df.to_json())
     return df

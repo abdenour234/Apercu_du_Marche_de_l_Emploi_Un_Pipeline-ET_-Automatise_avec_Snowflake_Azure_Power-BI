@@ -316,12 +316,7 @@ def extract_bigdata(text):
 
 
 
-class JobLevel(Enum):
-    SENIOR = "senior"
-    JUNIOR = "junior"
-    INTERNSHIP = "internship"
-
-def classify_job_level(job_description: str) -> Tuple[JobLevel, List[str]]:
+def classify_job_level(job_description: str) -> str:
     """
     Determines if a job description is for a senior, junior, or internship position.
     
@@ -329,13 +324,10 @@ def classify_job_level(job_description: str) -> Tuple[JobLevel, List[str]]:
         job_description (str): The job description text to analyze
         
     Returns:
-        tuple[JobLevel, list[str]]: A tuple containing:
-            - JobLevel enum indicating the position level
-            - List of evidence supporting the classification
+        str: The job level classification ("SENIOR", "JUNIOR", or "INTERNSHIP")
     """
     # Convert to lowercase for case-insensitive matching
     text = job_description.lower()
-    evidence = []
     
     # Senior level indicators
     senior_patterns = {
@@ -414,34 +406,30 @@ def classify_job_level(job_description: str) -> Tuple[JobLevel, List[str]]:
     for category, patterns in senior_patterns.items():
         for pattern in patterns:
             if re.search(pattern, text):
-                evidence.append(f"Senior indicator ({category}): {pattern}")
                 senior_count += 1
     
     # Check junior patterns
     for category, patterns in junior_patterns.items():
         for pattern in patterns:
             if re.search(pattern, text):
-                evidence.append(f"Junior indicator ({category}): {pattern}")
                 junior_count += 1
     
     # Check internship patterns
     for category, patterns in internship_patterns.items():
         for pattern in patterns:
             if re.search(pattern, text):
-                evidence.append(f"Internship indicator ({category}): {pattern}")
                 internship_count += 1
     
     # Decision logic with weightings
-    if internship_count >= 2 and senior_count < 2:
-        return JobLevel.INTERNSHIP
-    elif senior_count >= 2 and internship_count < 2:
-        return JobLevel.SENIOR
+    if internship_count >= 2:
+        return "INTERNSHIP"
+    elif senior_count >= 2:
+        return "SENIOR"
     elif junior_count > senior_count or (junior_count >= 1 and senior_count < 2):
-        return JobLevel.JUNIOR
+        return "JUNIOR"
     else:
         # Default to junior if unclear
-        evidence.append("Insufficient clear indicators - defaulting to JUNIOR")
-        return JobLevel.JUNIOR
+        return "JUNIOR"
 
 def get_moroccan_city(location: str) -> str:
     city_variants = {

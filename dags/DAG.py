@@ -1,6 +1,10 @@
+import sys
+import os
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
+
+# Now we can import the modules using absolute imports
 from extract import extract_
 from transform import transform
 from load import load
@@ -13,7 +17,7 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
-    'retry_delay': timedelta(minutes=60),
+    'retry_delay': timedelta(minutes=1),
 }
 
 # Define the DAG

@@ -1,0 +1,95 @@
+[2025-02-01T13:30:07.564+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-02-01T13:30:07.583+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline.extract manual__2025-02-01T13:29:53.528791+00:00 [queued]>
+[2025-02-01T13:30:07.592+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline.extract manual__2025-02-01T13:29:53.528791+00:00 [queued]>
+[2025-02-01T13:30:07.593+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 2
+[2025-02-01T13:30:07.609+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): extract> on 2025-02-01 13:29:53.528791+00:00
+[2025-02-01T13:30:07.625+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70: DeprecationWarning: This process (pid=185) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-02-01T13:30:07.632+0000] {standard_task_runner.py:72} INFO - Started process 187 to run task
+[2025-02-01T13:30:07.631+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline', 'extract', 'manual__2025-02-01T13:29:53.528791+00:00', '--job-id', '66', '--raw', '--subdir', 'DAGS_FOLDER/DAG.py', '--cfg-path', '/tmp/tmpfk_076o5']
+[2025-02-01T13:30:07.633+0000] {standard_task_runner.py:105} INFO - Job 66: Subtask extract
+[2025-02-01T13:30:07.708+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_pipeline.extract manual__2025-02-01T13:29:53.528791+00:00 [running]> on host 62152b012983
+[2025-02-01T13:30:07.795+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline' AIRFLOW_CTX_TASK_ID='extract' AIRFLOW_CTX_EXECUTION_DATE='2025-02-01T13:29:53.528791+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-01T13:29:53.528791+00:00'
+[2025-02-01T13:30:07.797+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-02-01T13:30:07.797+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-02-01T13:30:07.798+0000] {logging_mixin.py:190} INFO - Current task name:extract state:running start_date:2025-02-01 13:30:07.584114+00:00
+[2025-02-01T13:30:07.798+0000] {logging_mixin.py:190} INFO - Dag name:etl_pipeline and current dag run status:running
+[2025-02-01T13:30:07.798+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-02-01T13:30:09.132+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Data Scientist, Status Code: 403
+[2025-02-01T13:30:09.438+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Data Analyst, Status Code: 429
+[2025-02-01T13:30:09.729+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Data Engineer, Status Code: 429
+[2025-02-01T13:30:10.047+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Cloud Engineer, Status Code: 429
+[2025-02-01T13:30:10.492+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Software Developer, Status Code: 429
+[2025-02-01T13:30:10.811+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Software Engineer, Status Code: 429
+[2025-02-01T13:30:11.104+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: DevOps Engineer, Status Code: 429
+[2025-02-01T13:30:11.408+0000] {logging_mixin.py:190} INFO - Failed to fetch jobs for keyword: Cloud Architect, Status Code: 429
+[2025-02-01T13:30:11.431+0000] {_universal.py:509} INFO - Request URL: 'https://myaccount123xyz.blob.core.windows.net/bronze/data/data_bronze.csv'
+Request method: 'GET'
+Request headers:
+    'x-ms-range': 'REDACTED'
+    'x-ms-version': 'REDACTED'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.24.0 Python/3.12.8 (Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.36)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'a976c016-e0a0-11ef-ae0b-0242ac130006'
+    'Authorization': 'REDACTED'
+No body was attached to the request
+[2025-02-01T13:30:11.783+0000] {_universal.py:545} INFO - Response status: 206
+Response headers:
+    'Content-Length': '1'
+    'Content-Type': 'application/octet-stream'
+    'Content-Range': 'REDACTED'
+    'Last-Modified': 'Sat, 01 Feb 2025 13:26:17 GMT'
+    'Accept-Ranges': 'REDACTED'
+    'ETag': '"0x8DD42C40271C867"'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '1a5f3cb5-d01e-004e-48ad-74fb5b000000'
+    'x-ms-client-request-id': 'a976c016-e0a0-11ef-ae0b-0242ac130006'
+    'x-ms-version': 'REDACTED'
+    'x-ms-creation-time': 'REDACTED'
+    'x-ms-blob-content-md5': 'REDACTED'
+    'x-ms-lease-status': 'REDACTED'
+    'x-ms-lease-state': 'REDACTED'
+    'x-ms-blob-type': 'REDACTED'
+    'x-ms-server-encrypted': 'REDACTED'
+    'Date': 'Sat, 01 Feb 2025 13:30:05 GMT'
+[2025-02-01T13:30:11.792+0000] {logging_mixin.py:190} INFO - Blob 'data/data_bronze.csv' does not exist or is empty. Creating a new one.
+[2025-02-01T13:30:11.816+0000] {_universal.py:506} INFO - Request URL: 'https://myaccount123xyz.blob.core.windows.net/bronze/data/data_bronze.csv'
+Request method: 'PUT'
+Request headers:
+    'Content-Length': '1'
+    'x-ms-blob-type': 'REDACTED'
+    'x-ms-version': 'REDACTED'
+    'Content-Type': 'application/octet-stream'
+    'Accept': 'application/xml'
+    'User-Agent': 'azsdk-python-storage-blob/12.24.0 Python/3.12.8 (Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.36)'
+    'x-ms-date': 'REDACTED'
+    'x-ms-client-request-id': 'a9b1ca76-e0a0-11ef-ae0b-0242ac130006'
+    'Authorization': 'REDACTED'
+A body is sent with the request
+[2025-02-01T13:30:11.883+0000] {_universal.py:545} INFO - Response status: 201
+Response headers:
+    'Content-Length': '0'
+    'Content-MD5': 'REDACTED'
+    'Last-Modified': 'Sat, 01 Feb 2025 13:30:05 GMT'
+    'ETag': '"0x8DD42C48A09EBD7"'
+    'Server': 'Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0'
+    'x-ms-request-id': '1a5f3d3b-d01e-004e-3ead-74fb5b000000'
+    'x-ms-client-request-id': 'a9b1ca76-e0a0-11ef-ae0b-0242ac130006'
+    'x-ms-version': 'REDACTED'
+    'x-ms-content-crc64': 'REDACTED'
+    'x-ms-request-server-encrypted': 'REDACTED'
+    'Date': 'Sat, 01 Feb 2025 13:30:05 GMT'
+[2025-02-01T13:30:11.884+0000] {logging_mixin.py:190} INFO - Data appended successfully to blob 'data/data_bronze.csv' in container 'bronze'!
+[2025-02-01T13:30:11.899+0000] {python.py:240} INFO - Done. Returned value was: Empty DataFrame
+Columns: []
+Index: []
+[2025-02-01T13:30:11.986+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-02-01T13:30:11.987+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_pipeline, task_id=extract, run_id=manual__2025-02-01T13:29:53.528791+00:00, execution_date=20250201T132953, start_date=20250201T133007, end_date=20250201T133011
+[2025-02-01T13:30:11.999+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-02-01T13:30:11.999+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-02-01T13:30:11.999+0000] {logging_mixin.py:190} INFO - Dag name:etl_pipeline queued_at:2025-02-01 13:29:57.385230+00:00
+[2025-02-01T13:30:12.000+0000] {logging_mixin.py:190} INFO - Task hostname:62152b012983 operator:PythonOperator
+[2025-02-01T13:30:12.026+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-02-01T13:30:12.036+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

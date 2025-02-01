@@ -1,0 +1,33 @@
+[2025-02-01T11:19:23.901+0000] {processor.py:186} INFO - Started process (PID=93) to work on /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py
+[2025-02-01T11:19:23.902+0000] {processor.py:914} INFO - Processing file /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py for tasks to queue
+[2025-02-01T11:19:23.904+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:23.904+0000] {dagbag.py:588} INFO - Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py
+[2025-02-01T11:19:29.973+0000] {processor.py:925} INFO - DAG(s) 'dataset_with_extra_by_context', 'dataset_with_extra_from_classic_operator', 'dataset_with_extra_by_yield' retrieved from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py
+[2025-02-01T11:19:30.189+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:30.188+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:dataset_with_extra_by_context
+[2025-02-01T11:19:30.366+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:30.365+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:dataset_with_extra_by_context
+[2025-02-01T11:19:30.519+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:30.518+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:dataset_with_extra_by_context
+[2025-02-01T11:19:30.809+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:30.809+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:dataset_with_extra_by_context
+[2025-02-01T11:19:30.957+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:30.956+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:dataset_with_extra_by_context
+[2025-02-01T11:19:31.086+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:31.085+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:dataset_with_extra_by_context
+[2025-02-01T11:19:31.237+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:31.236+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:dataset_with_extra_by_context
+[2025-02-01T11:19:31.515+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:31.515+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:31.633+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:31.632+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:31.775+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:31.774+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:32.106+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.105+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:32.164+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.163+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:32.216+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.216+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:32.274+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.273+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:32.410+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.410+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.466+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.466+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.509+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.509+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.608+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.608+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.663+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.662+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.876+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.875+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.931+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.930+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:dataset_with_extra_by_yield
+[2025-02-01T11:19:32.931+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.931+0000] {dag.py:3239} INFO - Sync 3 DAGs
+[2025-02-01T11:19:32.942+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.942+0000] {dag.py:3262} INFO - Creating ORM DAG for dataset_with_extra_from_classic_operator
+[2025-02-01T11:19:32.944+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.943+0000] {dag.py:3262} INFO - Creating ORM DAG for dataset_with_extra_by_yield
+[2025-02-01T11:19:32.944+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.944+0000] {dag.py:3262} INFO - Creating ORM DAG for dataset_with_extra_by_context
+[2025-02-01T11:19:32.953+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.953+0000] {dag.py:4180} INFO - Setting next_dagrun for dataset_with_extra_by_context to 2025-01-31 00:00:00+00:00, run_after=2025-02-01 00:00:00+00:00
+[2025-02-01T11:19:32.955+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.955+0000] {dag.py:4180} INFO - Setting next_dagrun for dataset_with_extra_by_yield to 2025-01-31 00:00:00+00:00, run_after=2025-02-01 00:00:00+00:00
+[2025-02-01T11:19:32.957+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:32.957+0000] {dag.py:4180} INFO - Setting next_dagrun for dataset_with_extra_from_classic_operator to 2025-01-31 00:00:00+00:00, run_after=2025-02-01 00:00:00+00:00
+[2025-02-01T11:19:33.057+0000] {processor.py:208} INFO - Processing /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_outlet_event_extra.py took 9.170 seconds

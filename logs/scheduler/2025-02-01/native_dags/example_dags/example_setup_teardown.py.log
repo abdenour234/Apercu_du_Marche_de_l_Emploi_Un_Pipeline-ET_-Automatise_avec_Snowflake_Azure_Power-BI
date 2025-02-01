@@ -1,0 +1,15 @@
+[2025-02-01T11:19:33.339+0000] {processor.py:186} INFO - Started process (PID=95) to work on /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_setup_teardown.py
+[2025-02-01T11:19:33.340+0000] {processor.py:914} INFO - Processing file /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_setup_teardown.py for tasks to queue
+[2025-02-01T11:19:33.343+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:33.343+0000] {dagbag.py:588} INFO - Filling up the DagBag from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_setup_teardown.py
+[2025-02-01T11:19:33.350+0000] {processor.py:925} INFO - DAG(s) 'example_setup_teardown' retrieved from /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_setup_teardown.py
+[2025-02-01T11:19:33.786+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:33.784+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:example_setup_teardown
+[2025-02-01T11:19:33.838+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:33.837+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:example_setup_teardown
+[2025-02-01T11:19:33.893+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:33.892+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:example_setup_teardown
+[2025-02-01T11:19:34.003+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.002+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:example_setup_teardown
+[2025-02-01T11:19:34.038+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.037+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:example_setup_teardown
+[2025-02-01T11:19:34.091+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.091+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:example_setup_teardown
+[2025-02-01T11:19:34.150+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.150+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:example_setup_teardown
+[2025-02-01T11:19:34.151+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.151+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-02-01T11:19:34.160+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.160+0000] {dag.py:3262} INFO - Creating ORM DAG for example_setup_teardown
+[2025-02-01T11:19:34.161+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:34.161+0000] {dag.py:4180} INFO - Setting next_dagrun for example_setup_teardown to None, run_after=None
+[2025-02-01T11:19:34.215+0000] {processor.py:208} INFO - Processing /home/airflow/.local/lib/python3.12/site-packages/airflow/example_dags/example_setup_teardown.py took 0.881 seconds

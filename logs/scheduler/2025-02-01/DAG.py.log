@@ -1,0 +1,28 @@
+[2025-02-01T11:19:17.200+0000] {processor.py:186} INFO - Started process (PID=66) to work on /opt/airflow/dags/DAG.py
+[2025-02-01T11:19:17.203+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/DAG.py for tasks to queue
+[2025-02-01T11:19:17.214+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:17.213+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/DAG.py
+[2025-02-01T11:19:17.264+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:17.255+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/DAG.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAG.py", line 4, in <module>
+    from extract import extract_
+ModuleNotFoundError: No module named 'extract'
+[2025-02-01T11:19:17.266+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/DAG.py
+[2025-02-01T11:19:17.362+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/DAG.py took 0.192 seconds
+[2025-02-01T11:19:48.089+0000] {processor.py:186} INFO - Started process (PID=130) to work on /opt/airflow/dags/DAG.py
+[2025-02-01T11:19:48.090+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/DAG.py for tasks to queue
+[2025-02-01T11:19:48.093+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:48.092+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/DAG.py
+[2025-02-01T11:19:48.107+0000] {logging_mixin.py:190} INFO - [2025-02-01T11:19:48.103+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/DAG.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/DAG.py", line 4, in <module>
+    from extract import extract_
+ModuleNotFoundError: No module named 'extract'
+[2025-02-01T11:19:48.109+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/DAG.py
+[2025-02-01T11:19:48.131+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/DAG.py took 0.047 seconds

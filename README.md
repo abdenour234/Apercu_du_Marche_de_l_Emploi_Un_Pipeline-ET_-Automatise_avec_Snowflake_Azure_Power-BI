@@ -21,8 +21,12 @@ The goal of this project is to automate the collection and processing of job pos
 ## 🛠️ Tools Used
 - **Python** : Used for scripting and data manipulation.
 - **Pandas** : Employed for data transformation and cleaning.
+- **Scipy/Regular Expression** : Used for extracting relevent informations from Job's Description.
 - **Azure Blob Storage** :  Used for storing raw and cleaned datasets.
-- **Snowflake Data Warehouse** : The central repository for gold data
+- **Docker** : Used for Creating Isolated Environment For our Project .
+- **Azure Vm** : Used for hosting and runing our containers.
+- **Snowflake Data Warehouse** : The central repository for gold data.
+- **Snowpipe** : Used for Automating Data Ingestion into Snowflake. 
 - **Apache Airflow** : : Manages and automates the ETL pipeline.
 - **Power BI** : : Creates interactive dashboards and reports.
 
@@ -34,33 +38,47 @@ The goal of this project is to automate the collection and processing of job pos
 
 ✅The API fetches job postings related to Data Science and Data Engineering roles in Morocco.
 
-✅The extracted data is stored in Azure Blob Storage in the Bronze Layer. 
+✅The extracted data is stored in **Azure Blob Storage in the Bronze Layer**. 
 
-### 🔄 Step 2: Data Transformation
+### 🔄 Step 2: Data Transformation  
 
+✅ The extracted raw data is processed using Python and Pandas.  
 
-✅The extracted raw data is processed using Python and Pandas.
+✅ Key tasks include:  
 
-✅Key tasks include:
+   - Handling missing values and removing duplicate job postings.  
+   - Normalizing text fields and standardizing date formats.  
+   - Applying NLP techniques to extract relevant information from job descriptions, such as required **skills** (Cloud technologies, programming languages, frameworks).  
 
-   - Removing duplicate job postings.
+✅ The transformed data is saved in **Azure Blob Storage (Silver Layer).**
 
-   - Normalizing text fields.
+### 📥 Step 3: Data Loading into Snowflake  
 
-   - Handling missing values.
+✅ **Configuring Snowflake & Snowpipe:**  
+   - **Snowflake** and **Snowpipe** were configured for automated data ingestion.  
+   - **Event-driven ingestion:** Snowpipe listens for events in **Azure Blob Storage (Gold Layer)** and automatically ingests new data into **Snowflake** upon updates.  
 
-   - Standardizing date formats.
+✅ **Data Loading:**  
+   - Additional cleaning is performed before loading the data into **Snowflake**.  
+   - The cleaned data is stored in the **Gold Layer** of the data pipeline.  
 
-✅The cleaned data is saved in Azure Blob Storage (Silver Layer).
+✅ **Snowflake Ingestion & Transformation:**  
+   - **Flattening nested data:** Some fields contained lists, which were flattened in **Snowflake** to ensure a structured format.  
+   - **Creating standardized views:** A new view was created in Snowflake to provide a **clean, structured, and standardized** version of the job postings for analytics and reporting.
 
-### 📥 Step 3: Data Loading into Snowflake
-✅The transformed data is loaded into Snowflake using Python and SQL queries.
+### 📊 Step 4: Reporting with Power BI  
 
-✅Snowflake acts as the central repository for the structured job postings.
+✅ **Report Creation:**  
+   - Designed **interactive dashboards** to visualize key job market insights.  
+   - Tracked **KPIs** such as demand for specific skills, job trends, and company hiring patterns.  
 
-✅Data is stored in the Gold Layer of the data pipeline.
+✅ **Data Integration:**  
+   - Connected **Power BI** to **Snowflake** for real-time reporting.  
+   - Utilized **optimized queries and data models** to enhance performance.  
 
-### 📊 Step 4: Reporting with Power BI
+✅ **Business Insights:**  
+   - Provided **actionable insights** for recruiters and job seekers.  
+   - Enabled dynamic filtering and drill-down capabilities for deeper analysis.
 
 
 ## 🎨 Data Pipeline
@@ -69,6 +87,22 @@ andero schema dyl projet dylna
 ## 🔍 Dashboard
 ta nderoh 
 
-## 🙏 Acknowledgment
-les resources : documentation airflow , snowflkae, azure ..
+## 🙏 Acknowledgment  
+
+We would like to acknowledge the following resources that contributed to the success of this project:  
+
+- **Official Documentation:**  
+  - Apache Airflow  
+  - Snowflake  
+  - Microsoft Azure  
+
+- **Community Forums & Blogs:**  
+  - Stack Overflow  
+  - Medium articles  
+  - Snowflake and Azure community discussions
+ 
+- **ChatGpt/DeepSeek/ClaudAi**
+   - They were our project Encadrants
+
+These resources provided valuable guidance and best practices throughout the development process.
 

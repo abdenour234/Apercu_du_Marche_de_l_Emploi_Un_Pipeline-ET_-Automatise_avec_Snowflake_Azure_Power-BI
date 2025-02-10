@@ -1,56 +1,63 @@
-# ETL Project : Job Data Pipeline
+# ETL Project : Job Data Pipeline  
 
-## 📌 Table of Contents
-- [Introduction](#introduction)
-- [Project Overview](#project-overview)
-- [Tools Used](#tools-used)
-- [Project Steps](#project-steps)
-  - [Step 1: Data Extraction](#step-1-extraction-des-données)
-  - [Step 2: Data Transformation](#step-2-transformation-des-données)
-  - [Step 3: Data Loading into Snowflake](#step-3-chargement-des-données)
-  - [Step 4: Reporting with Power BI](#step-4-visualisation-des-données)
-- [Acknowledgment](#acknowledgment)
+## 📌 Table of Contents  
+- [🎯 Introduction](#-introduction)  
+- [🏗️ Project Overview](#-project-overview)  
+- [🛠️ Tools Used](#-tools-used)  
+- [📌 Project Steps](#-project-steps)  
+  - [🛠 Step 1: Data Extraction](#-step-1-data-extraction)  
+  - [🔄 Step 2: Data Transformation](#-step-2-data-transformation)  
+  - [📥 Step 3: Data Loading into Snowflake](#-step-3-data-loading-into-snowflake)  
+  - [📊 Step 4: Reporting with Power BI](#-step-4-reporting-with-power-bi)  
+- [🎨 Data Pipeline](#-data-pipeline)  
+- [🔍 Dashboard](#-dashboard)  
+- [🙏 Acknowledgment](#-acknowledgment)  
 
+---
 
-## 🎯 Introduction
-This README document provides an overview of an ETL (Extract, Transform, Load) project developed to extract job market data from an API, transform it using Python and Pandas, load the cleaned data into Snowflake, and create a reporting dashboard using Power BI.
+## 🎯 Introduction  
+This README document provides an overview of an ETL (Extract, Transform, Load) project developed to extract job market data from an API, transform it using Python and Pandas, load the cleaned data into Snowflake, and create a reporting dashboard using Power BI.  
 
-## 🏗️ Project Overview
-The goal of this project is to automate the collection and processing of job postings related to Data Science and Data Engineering roles in Morocco. The  data is stored in Snowflake and visualized in Power BI, enabling insights into job market trends.
+## 🏗️ Project Overview  
+The goal of this project is to automate the collection and processing of job postings related to Data Science and Data Engineering roles in Morocco. The data is stored in Snowflake and visualized in Power BI, enabling insights into job market trends.  
 
-## 🛠️ Tools Used
-- **Python** : Used for scripting and data manipulation.
-- **Pandas** : Employed for data transformation and cleaning.
-- **Scipy/Regular Expression** : Used for extracting relevent informations from Job's Description.
-- **Azure Blob Storage** :  Used for storing raw and cleaned datasets.
-- **Docker** : Used for Creating Isolated Environment For our Project .
-- **Azure Vm** : Used for hosting and runing our containers.
-- **Snowflake Data Warehouse** : The central repository for gold data.
-- **Snowpipe** : Used for Automating Data Ingestion into Snowflake. 
-- **Apache Airflow** : : Manages and automates the ETL pipeline.
-- **Power BI** : : Creates interactive dashboards and reports.
+## 🛠️ Tools Used  
+- **Python** : Used for scripting and data manipulation.  
+- **Pandas** : Employed for data transformation and cleaning.  
+- **Scipy/Regular Expression** : Used for extracting relevant information from Job Descriptions.  
+- **Azure Blob Storage** : Used for storing raw and cleaned datasets.  
+- **Docker** : Used for creating an isolated environment for our project.  
+- **Azure VM** : Used for hosting and running our containers.  
+- **Snowflake Data Warehouse** : The central repository for gold data.  
+- **Snowpipe** : Used for automating data ingestion into Snowflake.  
+- **Apache Airflow** : Manages and automates the ETL pipeline.  
+- **Power BI** : Creates interactive dashboards and reports.  
 
-## 📌 Project Steps
+---
 
-### 🛠 Step 1: Data Extraction
+## 📌 Project Steps  
 
-✅ The job market data is extracted from the API https://linkedin-data-scraper.p.rapidapi.com/search_jobs.
+### 🛠 Step 1: Data Extraction  
+✅ The job market data is extracted from the API [LinkedIn Data Scraper](https://linkedin-data-scraper.p.rapidapi.com/search_jobs).  
 
-✅The API fetches job postings related to Data Science and Data Engineering roles in Morocco.
+✅ The API fetches job postings related to Data Science and Data Engineering roles in Morocco.  
 
-✅The extracted data is stored in **Azure Blob Storage in the Bronze Layer**. 
+✅ The extracted data is stored in **Azure Blob Storage in the Bronze Layer**.  
+
+---
 
 ### 🔄 Step 2: Data Transformation  
 
 ✅ The extracted raw data is processed using Python and Pandas.  
 
 ✅ Key tasks include:  
-
    - Handling missing values and removing duplicate job postings.  
    - Normalizing text fields and standardizing date formats.  
-   - Applying NLP techniques to extract relevant information from job descriptions, such as required **skills** (Cloud technologies, programming languages, frameworks).  
+   - Applying **NLP techniques** to extract relevant information from job descriptions, such as required **skills** (Cloud technologies, programming languages, frameworks).  
 
-✅ The transformed data is saved in **Azure Blob Storage (Silver Layer).**
+✅ The transformed data is saved in **Azure Blob Storage (Silver Layer).**  
+
+---
 
 ### 📥 Step 3: Data Loading into Snowflake  
 
@@ -64,7 +71,9 @@ The goal of this project is to automate the collection and processing of job pos
 
 ✅ **Snowflake Ingestion & Transformation:**  
    - **Flattening nested data:** Some fields contained lists, which were flattened in **Snowflake** to ensure a structured format.  
-   - **Creating standardized views:** A new view was created in Snowflake to provide a **clean, structured, and standardized** version of the job postings for analytics and reporting.
+   - **Creating standardized views:** A new view was created in Snowflake to provide a **clean, structured, and standardized** version of the job postings for analytics and reporting.  
+
+---
 
 ### 📊 Step 4: Reporting with Power BI  
 
@@ -78,14 +87,19 @@ The goal of this project is to automate the collection and processing of job pos
 
 ✅ **Business Insights:**  
    - Provided **actionable insights** for recruiters and job seekers.  
-   - Enabled dynamic filtering and drill-down capabilities for deeper analysis.
+   - Enabled dynamic filtering and drill-down capabilities for deeper analysis.  
 
+---
 
-## 🎨 Data Pipeline
-andero schema dyl projet dylna 
+## 🎨 Data Pipeline  
+*(Schema to be added here)*  
 
-## 🔍 Dashboard
-ta nderoh 
+---
+
+## 🔍 Dashboard  
+*(Power BI visuals to be added here)*  
+
+---
 
 ## 🙏 Acknowledgment  
 
@@ -99,10 +113,10 @@ We would like to acknowledge the following resources that contributed to the suc
 - **Community Forums & Blogs:**  
   - Stack Overflow  
   - Medium articles  
-  - Snowflake and Azure community discussions
- 
-- **ChatGpt/DeepSeek/ClaudAi**
-   - They were our project Encadrants
+  - Snowflake and Azure community discussions  
 
-These resources provided valuable guidance and best practices throughout the development process.
+- **ChatGPT / DeepSeek / Claude AI**  
+   - They were our project mentors  
+
+These resources provided valuable guidance and best practices throughout the development process.  
 

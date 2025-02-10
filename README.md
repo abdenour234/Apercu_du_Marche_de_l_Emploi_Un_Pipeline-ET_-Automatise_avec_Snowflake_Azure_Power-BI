@@ -92,7 +92,8 @@ The goal of this project is to automate the collection and processing of job pos
 ---
 
 ## 🎨 Data Pipeline  
-*(Schema to be added here)*  
+![Data Pipeline](pipeline.png)
+
 
 ---
 

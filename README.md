@@ -1,4 +1,4 @@
-# ETL Project : [Nom de ton projet]
+# ETL Project : Job Data Pipeline
 
 ## 📌 Table of Contents
 - [Introduction](#introduction)
